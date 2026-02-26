@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Watchlist</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body class="container">
+    <nav>
+      <ul><li><strong>Stockify</strong></li></ul>
+    </nav>
+
+    <main>
+        <hgroup>
+            <h1>Market Watchlist</h1>
+            <h2>Investing Made Easy. Stocks. ETFs. Cryptocurrencies. And so much more! Experience it all on Investify.</h2>            
+        </hgroup>
+        
+        <div id="stock-list" class="grid overflow-auto">
+            <article>Loading market data...</article>
+        </div>
+    </main>
+</body>
+<script>
+    fetch('/api/stocks')
+        .then(response => response.json())
+        .then(stocks => {
+            const listContainer = document.getElementById('stock-list');
+            listContainer.innerHTML = stocks.map(stock => `
+            <a href="/stock/${stock.ticker}" role="button" class="outline" >
+           
+                        <div>
+                            <strong>${stock.ticker}</strong>
+                        </div>
+                        <div>
+                            ${stock.name}
+                        </div>
+                        </a>
+            `).join('');
+        });
+</script>
+</html>
