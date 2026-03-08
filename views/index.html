@@ -15,6 +15,8 @@
             <h1>Market Watchlist</h1>
             <h2>Investing Made Easy. Stocks. ETFs. Cryptocurrencies. And so much more! Experience it all on Investify.</h2>            
         </hgroup>
+
+        <input type="text" id="search-input" placeholder="Search by ticker or name..." oninput="searchStocks()">
         
         <div id="stock-list" class="grid overflow-auto">
             <article>Loading market data...</article>
@@ -38,5 +40,25 @@
                         </a>
             `).join('');
         });
+
+        function searchStocks() {
+    const query = document.getElementById('search-input').value;
+    fetch(`/api/stocks?search=${query}`)
+        .then(response => response.json())
+        .then(stocks => {
+            const listContainer = document.getElementById('stock-list');
+            listContainer.innerHTML = stocks.map(stock => `
+            <a href="/stock/${stock.ticker}" role="button" class="outline" >
+           
+                        <div>
+                            <strong>${stock.ticker}</strong>
+                        </div>
+                        <div>
+                            ${stock.name}
+                        </div>
+                        </a>
+            `).join('');
+        });
+}
 </script>
 </html>

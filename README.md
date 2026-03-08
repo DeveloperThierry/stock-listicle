@@ -1,54 +1,88 @@
 ![Screenshot](/header.png)
 
-
-# WEB103 Project 1 - *Stockify*
+# WEB103 Project 2 - *Stockify*
 
 Submitted by: Thierry Laguerre
 
 About this web app: stock-listicle
 
-Time spent: **2** hours
+Time spent: **4** hours
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-<!-- Make sure to check off completed functionality below -->
 - [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
-- [x] **The web app displays a title**
-- [x] **The web app displays at least five unique list items, each with at least three displayed attributes (such as title, text, and image)**
-- [x] **The user can click on each item in the list to see a detailed view of it, including all database fields**
-  - [x] **Each detail view should be a unique endpoint, such as as `localhost:3000/bosses/crystalguardian` and `localhost:3000/mantislords`**
-  - [x] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view. We will not be able to give points if we cannot see the implementation* 
-- [x] **The web app serves an appropriate 404 page when no matching route is defined**
-- [x] **The web app is styled using Picocss**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
+  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [x] **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command `SELECT * FROM tablename;` to display your table contents.**
 
 The following **optional** features are implemented:
 
-- [x] The web app displays items in a unique format, such as cards rather than lists or animated list items (PioCSS Grid View)
-
-The following **additional** features are implemented:
-
-- [x] Dynamic Color of Price (Green for High Cost Stocks and Red for Stocks under $200)
+- [x] The user can search for items by a specific attribute
 
 ## Video Walkthrough
 
-**Note: please be sure to 
+**Note: please be sure to**
 
 Here's a walkthrough of implemented required features:
 
-<img src='https://imgur.com/a/wdBRySi.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/6fwi5Er' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  Add GIF tool here
+GIF created with ... Add GIF tool here
 <!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
+[Kap](https.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
 [peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
 
 Describe any challenges encountered while building the app or any additional context you'd like to add.
+
+## 🛠️ Installation and Setup
+
+1.  **Clone and Install**
+
+    First, navigate to your project folder in the terminal and install the necessary dependencies:
+
+    ```bash
+    npm install
+    ```
+
+2.  **Environment Variables**
+
+    Create a `.env` file in the root directory of your project. You will need your credentials from the Render Dashboard.
+
+    Fill in the following with your Render PostgreSQL details:
+
+    ```plaintext
+    PGDATABASE="your_database_name"
+    PGHOST="your_hostname_from_render"
+    PGPASSWORD="your_password"
+    PGPORT=5432
+    PGUSER="your_username"
+    ```
+
+3.  **Initialize the Database**
+
+    Before running the app for the first time, you must create the tables and seed the data. I have automated this into a single command:
+
+    ```bash
+    npm run reset
+    ```
+
+    You should see "🎉 stocks table created successfully" and success messages for each stock added.
+
+4.  **Run the Application**
+
+    Start the server:
+
+    ```bash
+    npm start
+    ```
+
+    The server will now be live at http://localhost:3001.
 
 ## License
 
